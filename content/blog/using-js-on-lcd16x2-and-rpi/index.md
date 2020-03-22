@@ -61,7 +61,8 @@ The [lcd][lcd-package] allows you to have a high-level API in controlling the LC
 
 Then create your `lcd.js` file with the following contents in it:
 
-{% gist 755a18f01121d568758f29d3eaffee1b %}
+
+`gist:pofay/755a18f01121d568758f29d3eaffee1b#lcd.js`
 
 If you want to edit what to display in the lcd just replace the first argument in the `lcd.print()` method
 
@@ -77,7 +78,7 @@ And you should see the time through the LCD:
 
 An example of Displaying an extra line to the LCD:
 
-{% gist e2fb9c21da4fbfee5fdddc983b1bc104 %}
+`gist:pofay/e2fb9c21da4fbfee5fdddc983b1bc104#lcd-two-lines.js`
 
 > The Api of the lcd package does not do an automatic newline unlike the [Adafruit Python Library][adafruit-python]. If you miss out on putting the next `setCursor` and `print` in the previous print callback it won't be displayed on the lcd since the internal implementation of the module does not write if the given value can be overwritten. See this [test][test] for more info.
 

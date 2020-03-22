@@ -37,6 +37,16 @@ module.exports = {
             },
           },
           {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              username: "pofay",
+
+              // a flag indicating whether the github default gist css should be included or not
+              // default: true
+              includeDefaultCss: true,
+            },
+          },
+          {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
