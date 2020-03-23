@@ -52,6 +52,9 @@ const Layout = ({ location, title, children }) => {
   return (
     <div
       style={{
+        backgroundColor: "var(--bg)",
+        color: "var(--textNormal)",
+        transition: "color 0.2s ease-out, background 0.2s ease-out",
         marginLeft: `auto`,
         marginRight: `auto`,
         maxWidth: rhythm(24),
@@ -61,7 +64,7 @@ const Layout = ({ location, title, children }) => {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built using 
+        © {new Date().getFullYear()}, Built using
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
       </footer>

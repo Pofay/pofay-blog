@@ -12,7 +12,7 @@ For Arduino the setup is pretty easy but the constraints are as follows:
 
 > The JavaScript program is executed on a host machine that runs Node.js. The program transmits basic IO instructions to the board via usb serial, which acts as a thin client. Requires tethering.
 
-Which means your **Arduino must be connected at all times to the host machine so that the code can run**. 
+Which means your **Arduino must be connected at all times to the host machine so that the code can run**.
 
 This is unlike the traditional method of **upload and forget** when using base Arduino.
 
@@ -20,7 +20,7 @@ Although this drawback can be mitigated by using a Raspberry Pi alongside the Ar
 
 Thats when I found this [link][hc-05-link] for using a [HC-05][hc-05] bluetooth module to act as a wireless serial port.
 
-Although theres a number of things that the guide in the link omitted. Like **where is the key pin** on a HC-05.
+Although theres a number of things that the guide in the link omitted. Like where is the **key pin** on a HC-05.
 
 And that you have to use a **Bluetooth Manager** to actually let the device be seen as a **serial port**.
 
@@ -37,7 +37,7 @@ Its going to basically mirror what the guide has but with added content on whats
 
 So first off we need to send AT commands to the HC-05. In order for us to do that we need to do this connection:
 
-**with Bluetooth RX to PIN 11 and Bluetooth TX to PIN 10**
+**With Bluetooth RX to PIN 11 and Bluetooth TX to PIN 10**
 
 ![connection](/hc-05-setup.png)
 
@@ -45,17 +45,19 @@ And also locate the KEY pin of the HC-05. This is important since this is where 
 
 ![key-pin](/key-pin.png)
 
-Then open up your Arduino IDE and stick this code in it.
+Then open up your Arduino IDE and stick this code:
 
 `gist:pofay/d1b43d63158483ca666d5380d5a0ad7d#bluetooth-setup.ino`
 
-Assuming you have done the required connection, run the code and quickly use a jumper wire to **connect PIN 9 of your Arduino to the HC-05 KEY PIN**. You have 10 seconds to do that.
+Assuming you have done the required connection, **run the code and manually connect a jumper wire to PIN 9 of your Arduino to the HC-05 KEY PIN**.
+
+You have 10 seconds to do that.
 
 After 10 seconds the TX LED of your Arduino should blink every second for 6 seconds.
 
 If you've done this right you should see an output in your Serial Monitor similar to this:
 
-    Starting config
+    Starting config 
     OK
     OK[VERSION]
     OK
