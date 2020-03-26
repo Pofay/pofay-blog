@@ -28,19 +28,23 @@ The things I learned from the book that were easily digestible for me:
 
 As an example I'll use`map` from the `Array` class.
 
-    const numbers = [1,2,3]
+```js
+const numbers = [1,2,3]
 
-    const addOne = (x) => x + 1
+const addOne = (x) => x + 1
 
-    numbers.map(addOne)
+numbers.map(addOne)
+```
 
 But alot of times as the author points out it ends up being like this:
-    
-    const numbers = [1,2,3]
 
-    const addOne = (x) => x + 1
+```js
+const numbers = [1,2,3]
 
-    numbers.map(x => addOne(x))
+const addOne = (x) => x + 1
+
+numbers.map(x => addOne(x))
+```
 
 Although there are no problems with both versions you have to change more parts in the second example when `map` sends more than one argument to the given function.
 
@@ -48,15 +52,21 @@ Lets say instead of just `addOne` you also want to add in the index as well.
 
 So the function changes like this (hypothetically):
 
-    const addOneAndIndex = (x,y) => x + y + 1
+```js
+const addOneAndIndex = (x,y) => x + y + 1
+```
 
 If you were using the first example the change would just be a rename of the passed function.
 
-    numbers.map(addOneAndIndex)
+```js
+numbers.map(addOneAndIndex)
+```
 
 In the second example however you would have to add in the extra arguments as well.
 
-    numbers.map(x,y => addOneAndIndex(x,y))
+```js
+numbers.map(x,y => addOneAndIndex(x,y))
+```
 
 So the bottom line is that **there are more parts to change** when you don't use this feature.
 
@@ -67,47 +77,57 @@ If you've ever had experience with [Dependency Injection][4] with Objects this i
 
 With Currying and Partial Application we can transform certain functions such as this:
 
-    const sum = (x,y) => x + y
- 
-    const result = sum(30,10) // 40
+```js
+const sum = (x,y) => x + y
+
+const result = sum(30,10) // 40
+```
 
 To be used in this manner:
- 
-    const addTen = sum(10)
 
-    const result = addTen(30) // 40
+```js
+const addTen = sum(10)
+
+const result = addTen(30) // 40
+```
 
 To turn the original `sum` into a curried function we reimplement it like so:
 
-    const sum = x => y => x + y
+```js
+const sum = x => y => x + y
+```
 
 Thus when sum is given the first argument it just returns you a function that will add the first argument to the second argument through the magic of [Closures][6]
 
 This allows you to turn multi-argument functions into one arg functions (or one-arity functions for those inclined).
 
-    const concatLetters = (a,b,c,d) => a + b + c + d
+```js
+const concatLetters = (a,b,c,d) => a + b + c + d
 
-    const curriedConcat = a => b => c => d => concatLetters(a,b,c,d)
+const curriedConcat = a => b => c => d => concatLetters(a,b,c,d)
 
-    const startWithA = curriedConcat('A')
+const startWithA = curriedConcat('A')
 
-    curriedConcat('A')('B')('C')('D') // ABCD
-    startWithA('B')('C')('D') // ABCD
+curriedConcat('A')('B')('C')('D') // ABCD
+startWithA('B')('C')('D') // ABCD
+```
 
-Without a functional library like [ramda][8] calling curried functions is very tedious doing all the `()()()` in between calls
+Without a library like [ramda][8] calling curried functions is very tedious doing all the `()()()` in between calls
 
 Using the `curry` function it becomes easier to use:
 
-    const R = require('ramda')
+```js
+const R = require('ramda')
 
-    const concatLetters = (a,b,c,d) => a + b + c + d
+const concatLetters = (a,b,c,d) => a + b + c + d
 
-    const curriedConcat = R.curry(concatLetters)
+const curriedConcat = R.curry(concatLetters)
 
-    const startWithA = curriedConcat('A')
+const startWithA = curriedConcat('A')
 
-    curriedConcat('A','B','C','D') // ABCD
-    startWithA('B','C','D') // ABCD
+curriedConcat('A','B','C','D') // ABCD
+startWithA('B','C','D') // ABCD
+```
 
 ### End
 
