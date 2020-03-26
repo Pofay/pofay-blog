@@ -1,24 +1,26 @@
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
+import { IconButton } from "@material-ui/core"
+import Brightness7Icon from "@material-ui/icons/Brightness7"
+import Brightness4Icon from "@material-ui/icons/Brightness4"
 import React from "react"
 
-class DarkMode extends React.Component {
-  render() {
-    return (
+const DarkMode = props => {
+  return (
+    <div style={{ height: 70 }}>
       <ThemeToggler>
         {({ theme, toggleTheme }) => (
-          <label>
-            <input
-              type="checkbox"
-              onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
-              checked={theme === "dark"}
-            />
-            {""}
-            Dark Mode
-          </label>
+          <IconButton
+            aria-label="toggle-theme"
+            onClick={e => {
+              theme === "dark" ? toggleTheme("light") : toggleTheme("dark")
+            }}
+          >
+            {theme === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
         )}
       </ThemeToggler>
-    )
-  }
+    </div>
+  )
 }
 
 export default DarkMode

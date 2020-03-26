@@ -10,7 +10,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
-import DarkMode from "../utils/dark-mode"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -62,8 +61,6 @@ const Bio = () => {
         {` `}
         <a href={`https://github.com/${social.github}`}>Github</a>
       </p>
-      <DarkMode />
-
     </div>
   )
 }
