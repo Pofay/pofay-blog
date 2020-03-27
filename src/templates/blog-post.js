@@ -14,7 +14,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
-    config: { identifier: data.markdownRemark.fields.slug, title: siteTitle },
+    config: { identifier: pageContext.slug, title: siteTitle },
   }
 
   return (
@@ -49,6 +49,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             marginBottom: rhythm(1),
           }}
         />
+
         <footer>
           <Bio />
         </footer>
