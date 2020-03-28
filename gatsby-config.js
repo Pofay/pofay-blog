@@ -6,7 +6,7 @@ module.exports = {
       summary: `who lives in Cebu, Philippines. Mostly in the process of making stuff work.`,
     },
     description: `Personal blog of Gian Carlo Gilos.`,
-    simeUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://pofay-blog.now.sh`,
     social: {
       github: `pofay`,
     },
