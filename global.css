@@ -10,12 +10,17 @@ body {
 body.dark {
   -webkit-font-smoothing: antialiased;
 
-  --bg: darkslategray;
-  --textNormal: rgba(255, 255, 255, 0.88);
-  --textTitle: white;
-  --textLink: yellow;
-  --hr: hsla(0, 0%, 100%, 0.2);
+  --bg: #1d1f21;
+  --textNormal: rgba(218, 218, 219, 0.88);
+  --textTitle: rgb(197, 197, 197);
+  --textLink: rgb(218, 218, 219);
+  --hr: #414244;
 }
+
+.dark blockquote {
+  color: rgba(218, 218, 219, 0.88);
+}
+
 .token.operator {
   background: none !important;
 }
